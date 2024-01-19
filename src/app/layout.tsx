@@ -1,0 +1,30 @@
+import { ClerkProvider } from '@clerk/nextjs'
+import type { Metadata } from 'next'
+import { Inter, Lato } from 'next/font/google'
+import './globals.css'
+import Providers from '@/components/Providers'
+import { Toaster } from 'react-hot-toast'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Enhanced Text Extractor',
+  description: 'Seamless Extraction, Elevated Efficiency.',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <ClerkProvider>
+      <Providers>
+        <html lang="en" suppressHydrationWarning>
+          <Toaster />
+          <body className={inter.className}>{children}</body>
+        </html>
+      </Providers>
+    </ClerkProvider>
+  )
+}
